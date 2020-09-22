@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script type="text/javascript">
+  
+  // Starts game
+  var wantsToPlay = confirm("Do you want to play Rock Paper Scissors?")
+
+  // If the user doesn't want to play
+  if (!wantsToPlay) {
+    alert("That's lame")
+  }
+
+  var userWins = 0;
+  var userLoses = 0;
+  var userTies = 0;
+
+  // Prompts the user to select an option
+  while (wantsToPlay) {
+    var userPick = prompt("Type 'r', 'p', or 's' to Play!");
+    var possiblePicks = ["r", "p", "s"];
+    var computerPick = possiblePicks[Math.floor(Math.random() * 3)];
+
+    // Exit if user does not want to play anymore
+    if (userPick.toLowerCase() === null) {
+      wantsToPlay = false;
+
+      // If user enters "Clear"
+    } else if (userPick.toLowerCase() === "clear") {
+      var userWins = 0;
+      var userLoses = 0;
+      var usesTies = 0;
+      alert("Score has been reset")
+      
+      // If user enters something not in the array of options
+    } else if
+      (possiblePicks.indexOf(userPick.toLowerCase()) === -1) {
+        alert("Make sure to enter 'r', 'p', 's', or 'clear'")
+
+    } else {
+
+      // Announce Computer's choice
+      alert("The computer chose " + computerPick);
+
+      // User Wins
+      if ((computerPick === "r" && userPick.toLowerCase() === "p") || (computerPick === "p" && userPick.toLowerCase() === "s") || (computerPick === "s" && userPick.toLowerCase() === "r")) {
+        userWins++;
+        alert("You beat the computer! You have " + userWins + " win(s)!");
+      }
+
+      // User Loses
+      else if ((computerPick === "p" && userPick.toLowerCase() === "r") || (computerPick === "s" && userPick.toLowerCase() === "p") || (computerPick === "r" && userPick.toLowerCase() === "p")) {
+        userLoses++;
+        alert("The computer beat you!  You have  " + userLoses + " loss(es)!");
+      }
+
+      // User Ties
+      else if (computerPick === userPick.toLowerCase()) {
+        userTies++;
+        alert("You tied with the computer!  You have  " + userTies + " tie(s)!");
+      }
+    }
+  }
+
+  </script>
+</body> 
+</html>
